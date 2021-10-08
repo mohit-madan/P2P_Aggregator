@@ -7,6 +7,7 @@ import Paragraph from "../components/Paragraph";
 import TextInput from "../components/TextInput";
 import { ActivityIndicator } from "react-native";
 import { numberValidator } from "../helpers/numberValidator";
+import config from "../../config";
 
 export default function StartScreen({ navigation }) {
   const [number, setNumber] = useState({ value: "", error: "" });
@@ -21,7 +22,7 @@ export default function StartScreen({ navigation }) {
       setLoading(false);
     } else {
       try {
-        const response = await fetch("<URL_OF_EXPRESS_APP>/" + number.value);
+        const response = await fetch(`${config.BACKEND_URL}/consent/` + number.value);
         const json = await response.text();
         navigation.navigate("Dashboard", { param: json });
       } catch (error) {
