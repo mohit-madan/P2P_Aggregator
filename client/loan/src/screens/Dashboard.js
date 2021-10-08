@@ -8,14 +8,14 @@ import {
   Text,
 } from "react-native";
 import WebView from "react-native-webview";
+import config from "../../config";
 
 export default function Dashboard({ navigation, route }) {
   const webviewRef = useRef(null);
-  const redirect_url = "<URL_OF_EXPRESS_APP>/redirect/";
-
+  const redirect_url = `${config.BACKEND_URL}/redirect/`;
   const onNavigation = (navState) => {
     if (navState.url === redirect_url) {
-      navigation.navigate("Complete");
+      navigation.navigate("RootNavigator");
     }
   };
 

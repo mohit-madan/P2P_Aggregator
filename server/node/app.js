@@ -27,7 +27,6 @@ const fs = require("fs");
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded());
-
 app.use(express.static("public"));
 
 // define the first route
@@ -61,7 +60,7 @@ app.get("/consent/:mobileNumber", (req, res) => {
         config.app_url +
         "/" +
         response.data.ConsentHandle +
-        "?redirect_url=<YOUR_CLIENT_URL>/redirect";
+        `?redirect_url=${config.backend_url}/redirect`;
       res.send(url);
     })
     .catch(function (error) {
@@ -74,7 +73,7 @@ app.get("/consent/:mobileNumber", (req, res) => {
 
 app.post("/Consent/Notification", (req, res) => {
   var body = req.body;
-  console.log(body);
+  // console.log(body);
 
   let headers = req.headers;
   let obj = JSON.parse(fs.readFileSync("./keys/setu_public_key.json", "utf8"));
@@ -226,8 +225,16 @@ const fi_data_fetch = (session_id, encryption_privateKey, keyMaterial) => {
 
 ///// GET DATA
 
-app.get("/get-data", (req, res) => {
+app.get("/get-data", async (req, res) => {
+  // axios.get('https://967780d2-861d-4c45-b1bb-0948c099ad2a.mock.pstmn.io/get-mock-data/')
+  // .then(function(response){
+  //   res.send(JSON.stringify(response.data));
+  // })
+  // .catch(function(error){
+  //   console.log(error);
+  //   console.log("error");  
+  // });
   res.send(JSON.parse(localStorage.getItem("jsonData")));
 });
 // start the server listening for requests
-app.listen(config.port || 3000, () => console.log("Server is running..."));
+app.listen(config.port || 3000, () => console.log("Server is running %s...", config.port));
