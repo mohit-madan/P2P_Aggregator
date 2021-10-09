@@ -1,8 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 import { View, Text, StyleSheet, ScrollView } from "react-native";
 import { Card, Button } from "react-native-paper";
 import Header from "../components/Header";
-export default function ProfileScreen({navigation}){
+export default function ProfileScreen({navigation, route}){
+    const [amount1, setAmount1] = useState(35250);
+    const [current1, setCurrent1] = useState(37224);
+
+    const handleAction = (action, amount, current) => {
+        navigation.navigate('Amount', {action:action, amount:amount, current:current})
+    }
+
     return(
         <ScrollView>
         <View style={styles.container}>
@@ -26,15 +33,15 @@ export default function ProfileScreen({navigation}){
                         <View style={styles.column}>
                             <View style={styles.item}>
                                 <Text style={styles.heading2}>
-                                    Profit  
+                                    Started  
                                 </Text>
-                                <Text style={styles.cardText}> ₹ 1,974</Text>
+                                <Text style={styles.cardText}>17 Jul '21</Text>
                             </View>
                             <View style={styles.item}>
                                 <Text style={styles.heading2}>
-                                    P&L
+                                    Annual Int.
                                 </Text>
-                                <Text style={styles.cardText}>  +5.6%</Text>
+                                <Text style={styles.cardText}>upto 12%</Text>
                             </View>
                         </View>
                         <View style={styles.column}>
@@ -42,19 +49,30 @@ export default function ProfileScreen({navigation}){
                                 <Text style={styles.heading2}>
                                     Invested
                                 </Text>
-                                <Text style={styles.cardText}>₹ 35,250</Text>
+                                <Text style={styles.cardText}>₹ {(route?.params?.action==="invest") ? (amount1 + parseInt(route?.params?.amount)): (route?.params?.action==="withdraw") ? (amount1 - parseInt(route?.params?.amount)) : amount1}</Text>
                             </View>
                             <View style={styles.item}>
                                 <Text style={styles.heading2}>
                                     Current
                                 </Text>
-                                <Text style={styles.cardText}>₹ 37,224</Text>
+                                <Text style={styles.cardText}>₹ {(route?.params?.action==="invest") ? (current1 + parseInt(route?.params?.amount)): (route?.params?.action==="withdraw") ? (current1 - parseInt(route?.params?.amount)) : current1}</Text>
                             </View>
                         </View>
                         </Card.Content>
+                        <Card.Actions style={{marginTop:10, alignSelf:'center'}}>
+                            <Button 
+                                mode="contained" 
+                                onPress={() => handleAction('withdraw', amount1, current1)}
+                            >Withdraw</Button>
+                            <Button 
+                                mode="contained" 
+                                style={{marginLeft:18}} 
+                                onPress={() => handleAction('invest',amount1, current1)}
+                            >Invest More</Button>
+                        </Card.Actions>
                     </Card>
                 </View>   
-                <View style={styles.card}>
+                {/* <View style={styles.card}>
                     <Card 
                         mode="outlined"
                         >
@@ -63,15 +81,15 @@ export default function ProfileScreen({navigation}){
                         <View style={styles.column}>
                             <View style={styles.item}>
                                 <Text style={styles.heading2}>
-                                    Profit  
+                                    Started  
                                 </Text>
-                                <Text style={styles.cardText}> ₹ 1,000</Text>
+                                <Text style={styles.cardText}>2 Jun '21</Text>
                             </View>
                             <View style={styles.item}>
                                 <Text style={styles.heading2}>
-                                    P&L
+                                    Annual Int.
                                 </Text>
-                                <Text style={styles.cardText}>  +4.6%</Text>
+                                <Text style={styles.cardText}>upto 12.6%</Text>
                             </View>
                         </View>
                         <View style={styles.column}>
@@ -89,8 +107,12 @@ export default function ProfileScreen({navigation}){
                             </View>
                         </View>
                         </Card.Content>
+                        <Card.Actions style={{marginTop:10, alignSelf:'center'}}>
+                            <Button mode="contained">Withdraw</Button>
+                            <Button mode="contained" style={{marginLeft:18}}>Invest More</Button>
+                        </Card.Actions>
                     </Card>
-                </View>    
+                </View>     */}
         </View>
         </ScrollView>
     )

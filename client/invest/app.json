@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "Personal Finance Management",
-    "slug": "personal-finance-management",
+    "name": "P2P invest app",
+    "slug": "p2p-invest",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",

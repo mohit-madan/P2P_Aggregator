@@ -7,7 +7,9 @@ import Button from "../components/Button";
 
 export default function InvestForm({ navigation }) {
     const [number, setNumber] = useState({ value: "", error: "" });
-
+    const handleInvest = () => {
+        navigation.navigate("Profile");
+    }
     return(
         <View style={styles.container}>
             <ScrollView>
@@ -24,7 +26,7 @@ export default function InvestForm({ navigation }) {
                     errorText={number.error}
                     keyboardType="number-pad"
                 />
-                <Button mode="contained">Invest</Button>
+                <Button mode="contained" onPress={handleInvest}>Invest</Button>
             </ScrollView>
         </View>
     )

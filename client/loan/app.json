@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "Personal Finance Management",
-    "slug": "personal-finance-management",
+    "name": "P2P Loan App",
+    "slug": "p2p-loan",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",

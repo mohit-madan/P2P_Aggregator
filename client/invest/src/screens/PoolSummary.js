@@ -36,7 +36,8 @@ export default function PoolSummary({navigation, route}){
             <View style={styles.column}>
                 <View style={styles.item}>                                
                     <Text style={styles.heading2}>Hist. Returns</Text>
-                    <Text>15%</Text>
+                    {route?.params?.risk==="High" ? <Text>18%</Text> : route?.params?.risk==="Medium" ? <Text>15%</Text> : route?.params?.risk==="Low" ? <Text>12%</Text> : <Text>9%</Text>}
+                    
                 </View>
                 <View style={styles.item}>                                
                     <Text style={styles.heading2}>Total Investers</Text>

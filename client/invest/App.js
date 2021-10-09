@@ -5,7 +5,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
 import { createStackNavigator } from "@react-navigation/stack";
 import { theme } from "./src/core/theme";
-import { HomeScreen, PoolSummary, InvestForm } from "./src/screens";
+import { HomeScreen, PoolSummary, InvestForm, Amount } from "./src/screens";
 // import { View, Text, TouchableOpacity } from 'react-native';
 import ProfileScreen from "./src/screens/ProfileScreen";
 import { MaterialIcons } from '@expo/vector-icons';
@@ -24,6 +24,7 @@ const RootNavigator = () => {
       <Stack.Screen name="HomeScreen" component={HomeScreen} />
       <Stack.Screen name="PoolSummary" component={PoolSummary} />
       <Stack.Screen name="InvestForm" component={InvestForm} />
+      <Stack.Screen name="Amount" component={Amount} />
     </Stack.Navigator>
   );
 };
