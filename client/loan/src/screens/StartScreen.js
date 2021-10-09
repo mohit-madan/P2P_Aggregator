@@ -36,10 +36,9 @@ export default function StartScreen({ navigation }) {
   return (
     <Background>
       <Logo />
-      <Header>Personal Finance</Header>
+      <Header>P2P Loan</Header>
       <Paragraph>
-        Provide access to your financial data so we can help you manage your
-        budget and finances.
+        Provide access to your financial data so we can help you get Loan.
       </Paragraph>
       <TextInput
         label="Mobile number"

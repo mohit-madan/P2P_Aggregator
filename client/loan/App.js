@@ -4,7 +4,7 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { theme } from "./src/core/theme";
-import { StartScreen, Complete, Dashboard, LoanForm, SummaryScreen } from "./src/screens";
+import { StartScreen, Complete, Dashboard, LoanForm, SummaryScreen, HomeScreen } from "./src/screens";
 import { MaterialIcons } from '@expo/vector-icons';
 
 const Stack = createStackNavigator();
@@ -47,11 +47,12 @@ export default function App() {
     <Provider theme={theme}>
       <NavigationContainer>
         <Stack.Navigator
-          initialRouteName="StartScreen"
+          initialRouteName="RootNavigator"
           screenOptions={{
             headerShown: false,
           }}
         >
+          <Stack.Screen name="HomeScreen" component={HomeScreen} />
           <Stack.Screen name="StartScreen" component={StartScreen} />
           <Stack.Screen name="Dashboard" component={Dashboard} />
           <Stack.Screen name="RootNavigator" component={RootNavigator} /> 
