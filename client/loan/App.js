@@ -47,7 +47,7 @@ export default function App() {
     <Provider theme={theme}>
       <NavigationContainer>
         <Stack.Navigator
-          initialRouteName="RootNavigator"
+          initialRouteName="HomeScreen"
           screenOptions={{
             headerShown: false,
           }}
